@@ -352,19 +352,23 @@
 
 ## Other Techniques
 
-- For Abusing legit sites for Phishing : [https://lots-project.com/](https://lots-project.com/)
-- BITB
-- noVNC Phishing : [https://adepts.of0x.cc/novnc-phishing/](https://adepts.of0x.cc/novnc-phishing/)
-- noVNC and Docker : [https://powerseb.github.io/posts/Another-phishing-tool/](https://powerseb.github.io/posts/Another-phishing-tool/)
-- NoPhish : [https://github.com/powerseb/NoPhish](https://github.com/powerseb/NoPhish) and [https://badoption.eu/blog/2023/07/12/entra_phish.html](https://badoption.eu/blog/2023/07/12/entra_phish.html)
-- EvilGoPhish : [https://github.com/fin3ss3g0d/evilgophish](https://github.com/fin3ss3g0d/evilgophish)
-- Smishing : [https://blog.shared-video.mov/systematic-destruction-hacking-the-scammers-pt.-2](https://blog.shared-video.mov/systematic-destruction-hacking-the-scammers-pt.-2)
+- For Abusing legit sites for Phishing : https://lots-project.com/
+- BITB : https://mrd0x.com/browser-in-the-browser-phishing-attack/
+- Progressive Web Apps (PWA) Phishing : https://mrd0x.com/progressive-web-apps-pwa-phishing/
+- noVNC Phishing : https://adepts.of0x.cc/novnc-phishing/
+- noVNC and Docker : https://powerseb.github.io/posts/Another-phishing-tool/
+- EvilQR - QR Phishing
+    - https://github.com/kgretzky/evilqr , https://breakdev.org/evilqr-phishing/
+    - https://github.com/swagkarna/EvilJack
+- NoPhish : https://github.com/powerseb/NoPhish and https://badoption.eu/blog/2023/07/12/entra_phish.html
+- EvilGoPhish : https://github.com/fin3ss3g0d/evilgophish
+- Smishing : https://blog.shared-video.mov/systematic-destruction-hacking-the-scammers-pt.-2
 - Phishing With CloudFlare Workers
-    - TryCloudflare : [https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/)
-    - [https://github.com/zolderio/AITMWorker](https://github.com/zolderio/AITMWorker)
-    - [https://gist.github.com/RedTeamOperations/33f245a777c9b322b0466b59d6687f15](https://gist.github.com/RedTeamOperations/33f245a777c9b322b0466b59d6687f15)
-    - [https://cyberwarfare.live/wp-content/uploads/2023/08/Certified-Red-Team-CredOps-Infiltrator-CRT-COI-1.pdf](https://cyberwarfare.live/wp-content/uploads/2023/08/Certified-Red-Team-CredOps-Infiltrator-CRT-COI-1.pdf)
+    - TryCloudflare : https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/
+    - https://github.com/zolderio/AITMWorker
+    - https://gist.github.com/RedTeamOperations/33f245a777c9b322b0466b59d6687f15
+    - https://cyberwarfare.live/wp-content/uploads/2023/08/Certified-Red-Team-CredOps-Infiltrator-CRT-COI-1.pdf
 - Google Open Redirection for phishing
-    - [https://untrustednetwork.net/en/2024/02/26/google-open-redirect/](https://untrustednetwork.net/en/2024/02/26/google-open-redirect/)
-    - Open Redirect at : [https://googleweblight.com/i?u=m4lici0u5.com](https://googleweblight.com/i?u=m4lici0u5.com)
-    - More Can be found at : [https://lots-project.com/](https://lots-project.com/)
+    - https://untrustednetwork.net/en/2024/02/26/google-open-redirect/
+    - Open Redirect at : https://googleweblight.com/i?u=m4lici0u5.com
+    - More Can be found at : https://lots-project.com/
