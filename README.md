@@ -1,5 +1,5 @@
 # Phishing Engagement Infrastructure Setup Guide
-> **Note:** These are copy of my personal notes. Please Do not completely rely on them.
+> **Note:** These are copy of my [personal notes](https://an0nud4y.notion.site/Phishing-Red-Team-Engagement-Infra-1c6fba8f2d854a14ba76320284161c5e?pvs=4). Please Do not completely rely on them.
 
 ## Blogs/Talks
 
