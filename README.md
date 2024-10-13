@@ -40,7 +40,16 @@
 ## Delivering Emails in Inbox
 
 - Method -1
-    - Use SendGrid
+    - Use SendGrid - http://sendgrid.com/
+        - useful service but honestly, You need Pro pain plan to be lucky not to be on a spamlist
+    - MailGun - https://app.mailgun.com/
+        - haven't had any problem
+    - [Amazon AWS SES](https://aws.amazon.com/ses/)
+    - Brevo : https://www.brevo.com/free-smtp-server/
+    - Outlook
+    - Gmail
+    - Setup a Microsoft365 Tenant
+      
 - Method - 2 (By Andre Rosario - From **BreakDev Red** Discord)
     - If you are having issues with delivering emails due to email filtering, consider using Microsoft 365 and Azure IPP to send encrypted emails to your targets!
         - Emails originate from legit Microsoft SMTP servers so they can't block it.
