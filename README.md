@@ -1,6 +1,35 @@
 # Phishing Engagement Infrastructure Setup Guide
 > **Note:** These are copy of my [personal notes](https://an0nud4y.notion.site/Phishing-Red-Team-Engagement-Infra-1c6fba8f2d854a14ba76320284161c5e?pvs=4). Please Do not completely rely on them.
 
+
+## Table of Contents
+
+- [Blogs/Talks](#blogstalks)
+- [Red Team/Phishing Infra Automation](#red-teamphishing-infra-automation)
+- [Domain Purchase and Categorization Techniques](#domain-purchase-and-categorization-techniques)
+- [Improve Phishing Email Writing Using Tools](#improve-phishing-email-writing-using-tools)
+- [Test Email Spammyness](#test-email-spammyness)
+- [Emulate Phishing emails / Purple Team Phishing](#emulate-phishing-emails--purple-team-phishing)
+- [Awesome Enterprise Email Security](#awesome-enterprise-email-security)
+- [Delivering Emails in Inbox](#delivering-emails-in-inbox)
+- [Phishing Engagements With Evilginx](#phishing-engagements-with-evilginx)
+  - [Building Evilginx Phishlets](#building-evilginx-phishlets)
+  - [Evilginx Installation Scripts](#evilginx-installation-scripts)
+  - [Securing Evilginx Infra tips](#securing-evilginx-infra-tips)
+  - [Evilginx Research Blogs/Talks](#evilginx-research-blogstalks)
+  - [Defense Tactics Against Evilginx](#defense-tactics-against-evilginx)
+- [Securing GoPhish Infra](#securing-gophish-infra)
+  - [GoPhish Research Blogs/Talks](#gophish-research-blogstalks)
+  - [Gophish Alternatives](#gophish-alternatives)
+- [AiTM Post Exploitation / Phishing Research Blogs/Talks](#aitm-post-exploitation--phishing-research-blogstalks)
+- [Other Techniques/Blogs/Researches](#other-techniquesblogsresearches)
+- [Phishing Research Talks](#phishing-research-talks)
+
+
+
+---
+
+
 ## Blogs/Talks
 
 - BHIS | How to Build a Phishing Engagement - Coding TTP's : [https://m.youtube.com/watch?si=YTjMa8XBusj_tPdc&v=VglCgoIjztE&feature=youtu.be](https://m.youtube.com/watch?si=YTjMa8XBusj_tPdc&v=VglCgoIjztE&feature=youtu.be)
