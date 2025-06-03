@@ -10,13 +10,17 @@
 ## Red Team/Phishing Infra Automation
 
 - [https://github.com/dazzyddos/HSC24RedTeamInfra/blob/main/RedTeamInfraAutomation.pdf](https://github.com/dazzyddos/HSC24RedTeamInfra/blob/main/RedTeamInfraAutomation.pdf)
-
+- OFFENSIVEX 2024 - Vincent Yiu - Red Team Tips in 2024 : https://youtu.be/ECIBCbMfeo4?feature=shared
+- https://github.com/bluscreenofjeff/Red-Team-Infrastructure-Wiki
+- Deploy a phishing infrastructure on the fly : https://github.com/VirtualSamuraii/flyphish
+- https://labs.jumpsec.com/putting-the-c2-in-c2loudflare/
 
 
 ## Domain Purchase and Categorization Techniques
 
 - Check for Expired Domain and Possibly purchase the good ones
     - [https://expireddomains.net/](https://expireddomains.net/)
+      
 - Domain Categorization
     - Bluecoat/Symantec - [https://sitereview.bluecoat.com/#/](https://sitereview.bluecoat.com/#/)
     - McAfee - [https://www.trustedsource.org](https://www.trustedsource.org/)
@@ -34,7 +38,10 @@
 - Automating Domain Reputation Checking/Submission
     - Domainhunter: https://github.com/threatexpress/domainhunter
     - Chameleon : https://github.com/mdsecactivebreach/Chameleon
-
+      
+- Blogs
+    - https://medium.com/@frsfaisall/mastering-modern-red-teaming-infrastructure-leveraging-old-domains-for-reputation-based-bypasses-1fd8cc1768f7
+      
 ## Improve Phishing Email Writing Using Tools
 
 - mgeeky : [https://github.com/mgeeky/Penetration-Testing-Tools/tree/master/phishing](https://github.com/mgeeky/Penetration-Testing-Tools/tree/master/phishing)
@@ -43,16 +50,20 @@
 
 
 ## Test Email Spammyness
-
 - https://www.mail-tester.com/
 
+## Emulate Phishing emails / Purple Team Phishing
+- https://delivr.to/
+  
 ## Awesome Enterprise Email Security
 
 - https://github.com/0xAnalyst/awesome-email-security
+- Gartner Magic Quadrant for Email Security Platforms
+   ![email-security-providers](img/email-security-providers.jpeg)
 
 ## Delivering Emails in Inbox
 
-- Method -1
+- Method -1 : Using Email Service Providers
     - Use SendGrid - http://sendgrid.com/
         - useful service but honestly, You need Pro pain plan to be lucky not to be on a spamlist
     - MailGun - https://app.mailgun.com/
@@ -61,30 +72,40 @@
     - Brevo : https://www.brevo.com/free-smtp-server/
     - Outlook
     - Gmail
-    - Setup a Microsoft365 Tenant
+    - Setup an Azure Tenant to get an [onmicrosoft.com](http://onmicrosoft.com) domain like [attackdomain.onmicrosoft.com](http://attackdomain.onmicrosoft.com/) which can be used for both email sending and phishing as domain
+    - LarkSuite (allows custom domain) : [https://www.larksuite.com/](https://www.larksuite.com/hc/en-US/category/7199952056356995077-domain-management)
+    - Zoho (Use the Zoho "Free for Life" email option) : https://www.zoho.com/mail/custom-domain-email.html
+    - Yandex : https://360.yandex.com/business/domain-mail/
       
-- Method - 2 (By Andre Rosario - From **BreakDev Red** Discord)
-    - If you are having issues with delivering emails due to email filtering, consider using Microsoft 365 and Azure IPP to send encrypted emails to your targets!
-        - Emails originate from legit Microsoft SMTP servers so they can't block it.
-        - Targets who get the encrypted email are the only ones who can open it, if they forward it to their DFIR, they will have to login as that user to even see your message.
-        - Easy orchestration in the Microsoft Admin portal of custom domains, create a ton of fake accounts.
-        - M365 allows you to set arbitrary display names. So in a targets outlook the email can look like its from `admin@domain.com` but it's really from `admin@maliciousdomain.com` (Technical people can easily figure this out though)
-        - Emails come from legit Microsoft IPs and domains, so you don't have to worry about domain categorization or lifespan since it's Microsoft.
-    - Steps
-        1. Make an account with a Microsoft 365 Business Standard (or higher) license.  ([https://www.microsoft.com/en-us/microsoft-365/enterprise/office365-plans-and-pricing](https://www.microsoft.com/en-us/microsoft-365/enterprise/office365-plans-and-pricing))
-        2. Create a generic company name.
-        3. Get a Azure Information Protection Premium P1 license to be able to use encryption. ([https://support.microsoft.com/en-us/office/encrypt-email-messages-373339cb-bf1a-4509-b296-802a39d801dc](https://support.microsoft.com/en-us/office/encrypt-email-messages-373339cb-bf1a-4509-b296-802a39d801dc))
-        4. Import your domain.
-        5. Create a user with an email to your custom domain to send the phish and give it the M365 Business and Azure IPP P1 license.
-        6. Draft your phishing message in Outlook online and press the encrypt button
-        7. ????
-        8. Profit
-    - Screenshot
-        
-        ![Untitled](img/Untitled.png)
-        
+- Method - 2 : Random Techniques
+    - Technique 1 : By Andre Rosario - From **BreakDev Red** Discord 
+        - If you are having issues with delivering emails due to email filtering, consider using Microsoft 365 and Azure IPP to send encrypted emails to your targets!
+            - Emails originate from legit Microsoft SMTP servers so they can't block it.
+            - Targets who get the encrypted email are the only ones who can open it, if they forward it to their DFIR, they will have to login as that user to even see your message.
+            - Easy orchestration in the Microsoft Admin portal of custom domains, create a ton of fake accounts.
+            - M365 allows you to set arbitrary display names. So in a targets outlook the email can look like its from `admin@domain.com` but it's really from `admin@maliciousdomain.com` (Technical people can easily figure this out though)
+            - Emails come from legit Microsoft IPs and domains, so you don't have to worry about domain categorization or lifespan since it's Microsoft.
+              
+    - Technique 2 : Using Azure External Invite functionality - From **BreakDev Red** Discord 
+        - Azure External Invite can be used for sending an email with redirect link to phishing url
+        - Bulk Emails can also be send, for reference check : https://learn.microsoft.com/en-us/entra/external-id/tutorial-bulk-invite
 
 
+- Random Tips to help getting emails in inbox.
+    - Have domain with good reputation , Check domain categorization
+    - Have a domain older than 1 year or use [expireddomain](https://expireddomains.net/)
+    - Have valid DKIM, DMARC, and SPF.
+        - Mailgoose (check whether their SPF, DMARC and DKIM configuration is set up correctly) : https://github.com/CERT-Polska/mailgoose
+    - Add unsubscribe link in email
+    - Send benign emails first (May help with reputation)
+    - Have link in email with same domain which is being used to send email.
+ 
+- Blogs/Talks/References
+    - Outlook_Email_Auth_Bypass : [https://gitlab.com/hxxpxxp/outlook_email_auth_bypass](https://gitlab.com/hxxpxxp/outlook_email_auth_bypass/-/tree/main?ref_type=heads) (In Outlook desktop and web app , "display name" of email's "From" header can manipulate the from email which is displayed to the user, that can result in more convincing phish emails)
+    - Spy Pixel - Image Pixel to track emails : https://github.com/collinsmc23/spy-pixel
+    - EchoSpoofing **:** https://labs.guard.io/echospoofing-a-massive-phishing-campaign-exploiting-proofpoints-email-protection-to-dispatch-3dd6b5417db6
+    - Blackhat USA 2024 - Novel Email Spoofing Attack Patterns : [https://github.com/onhexgroup/Conferences/blob/main/Black Hat USA 2024 slides/Hao Wang %26 Caleb Sargent %26 Harrison Pomeroy %26 Renana Friedlich_Into the Inbox Novel Email Spoofing Attack Patterns.pdf](https://github.com/onhexgroup/Conferences/blob/main/Black%20Hat%20USA%202024%20slides/Hao%20Wang%20%26%20Caleb%20Sargent%20%26%20Harrison%20Pomeroy%20%26%20Renana%20Friedlich_Into%20the%20Inbox%20Novel%20Email%20Spoofing%20Attack%20Patterns.pdf)
+      
 
 ## Phishing Engagements With Evilginx
 
@@ -117,8 +138,25 @@
         - Be aware of this research : https://catching-transparent-phish.github.io/catching_transparent_phish.pdf , repo - https://catching-transparent-phish.github.io/
         ```
         
-    - Remove X-Evilginx header (Check all the code lines with `req.Header.Set` and comment relevant functions)
-    - Search for `<html>` in core/http_proxy.go file and modify the html code to remove any static signatures.
+    - Remove X-Evilginx header (Check all the code lines with req.Header.Set and comment relevant functions in core/http_proxy.go file)
+      ```markdown
+        // comment line 469
+        req.Header.Set(p.getHomeDir(), o_host)
+        
+        //comment line 659
+        req.Header.Set(p.getHomeDir(), o_host)
+        
+        // comment function at line 1791-1793
+        func (p *HttpProxy) getHomeDir() string {
+        	return strings.Replace(HOME_DIR, ".e", "X-E", 1)
+        }
+        
+        // comment line 52-54
+        const (
+        	HOME_DIR = ".evilginx"
+        )
+        ```            
+    - To Modify Unauth redirect static contents, Search for `<html>` in core/http_proxy.go file and modify the html code to remove any static signatures.
     - Also to avoid the static injected js code signature detection , You can modify the code as below
         - Make sure to add "[github.com/tdewolff/minify/js](http://github.com/tdewolff/minify/js)" in imports
             
@@ -146,6 +184,24 @@
             
     - Modify core/cert.db file as well
     - Change `“rid”` for gophish.
+    - Use nginx , caddy or other proxies infront of evilginx.
+    - Use Redirectors
+        - Use cloudflare turnstile as evilginx redirector and block bots.
+            - https://github.com/kgretzky/evilginx2/blob/master/redirectors/turnstile/index.html
+        - Obfuscate html/js based redirectors
+            - Suspicious HTTP User agents list : https://github.com/mthcht/awesome-lists/blob/main/Lists/suspicious_http_user_agents_list.csv
+            - https://github.com/DosX-dev/WebSafeCompiler
+        - Bot detection methods used by gabagool phishing kit : https://medium.com/@traclabs_/aitm-phishing-hold-the-gabagool-analyzing-the-gabagool-phishing-kit-531f5bbaf0e4
+        - Meta html tag for redirection
+            - `<meta http-equiv="refresh" content="5;url=https://example.com">`
+    - Change default lure url pattern which is random string of length 8.
+      ```markdown
+         // Line 728 in core/terminal.go file
+				l := &Lure{
+					Path:     "/" + GenRandomString(8),
+					Phishlet: args[1],
+				}
+        ```     
     - Rewrite URLs on Phishing Pages to avoid detection through URL Path pattern matching (by Kuba). [This Feature not available in evilginx Public Version, You have to implement it yourself.]
         
         ```markdown
@@ -190,9 +246,67 @@
     - JA4 fingerprint evasion
         - https://github.com/refraction-networking/utls
         - https://github.com/juzeon/spoofed-round-tripper
-
-
-
+    - BITB + evilginx + Frame Busting Bypass
+        - https://x.com/otterhacker/status/1929487165458641045?s=46&t=mlJvZy0Zrkrxzuvtt7m2cQ
+            - OktaGinx : https://github.com/OtterHacker/OktaGinx/blob/main/okta.yaml#L17
+        - https://github.com/waelmas/frameless-bitb
+        - Frame Busting Bypass Example Subfilter from : https://github.com/OtterHacker/OktaGinx/blob/44fed02954b6cd65e17ab581209a4d0f3b734c24/okta.yaml#L124 and https://github.com/OtterHacker/OktaGinx/blob/44fed02954b6cd65e17ab581209a4d0f3b734c24/okta.yaml#L82
+            ```markdown
+            - triggers_on: 'login.microsoftonline.com'
+            orig_sub: ''
+            domain: 'okta.com'
+            search: 'if\(e.self===e.top\){'
+            replace: 'if(true){window.oldself=e.self;e.self=e.top;'
+            mimes: ['text/html', 'charset=utf-8']
+            
+          - triggers_on: 'login.microsoftonline.com'
+            orig_sub: ''
+            domain: 'okta.com'
+            search: 'X-Frame-Options: DENY'
+            replace: 'Test: test'
+            mimes: ['text/html', 'charset=utf-8']
+          ```
+            - Frame Busting Techniques Generally used
+              - https://en.wikipedia.org/wiki/Framekiller
+              - https://seclab.stanford.edu/websec/framebusting/framebust.pdf
+                - Common Techniques to Detect Presence of iframe
+                  ```
+                    if (top != self)
+                    if (top.location != self.location)
+                    if (top.location != location)
+                    if (parent.frames.length > 0)
+                    if (window != top)
+                    if (window.top !== window.self)
+                    if (window.self != window.top)
+                    if (parent && parent != window)
+                    if (parent && parent.frames && parent.frames.length>0)
+                    if((self.parent&&!(self.parent===self))&&(self.parent.frames.length!=0))
+                  ```
+                - Websites may use following method once iframe detected to perform redirection
+                   ```
+                   top.location.replace(self.location)
+                    top.location.href = window.location.href
+                    top.location.replace(document.location)
+                    top.location.href = window.location.href
+                    top.location.href = "URL"
+                    document.write(’’)
+                    top.location = location
+                    top.location.replace(document.location)
+                    top.location.replace(’URL’)
+                    top.location.href = document.location
+                    top.location.replace(window.location.href)
+                    top.location.href = location.href
+                    self.parent.location = document.location
+                    parent.location.href = self.document.location
+                    top.location.href = self.location
+                    top.location = window.location
+                    top.location.replace(window.location.pathname)
+                    window.top.location = window.self.location
+                    setTimeout(function(){document.body.innerHTML=’’;},1);
+                    window.self.onload = function(evt){document.body.innerHTML=’’;}
+                    var url = window.location.href; top.location.replace(url)
+                   ```
+                
 ### Evilginx Research Blogs/Talks :
 - A smooth sea never made a skilled phisherman - Kuba Gretzky (x33fc0n 2024) :
     - Talk : [https://youtu.be/Nh99d3YnpI4?si=Ltwus2PS0z97gf2R](https://youtu.be/Nh99d3YnpI4?si=Ltwus2PS0z97gf2R)
@@ -225,7 +339,7 @@
         - Rule 2: Script path=/s/64_hex_chars.js with content-length=0
         - Rule 3: Both Rule 1 & Rule 2 present
         - the full snippet js blob logic is here https://gist.github.com/rad9800/bb73de360fc07ac544f0bc9faac9082d
-
+- https://janbakker.tech/evilginx-loves-temporary-access-passes-too/
           
 ### Defense Tactics Against Evilginx
 - Unravelling and Countering Adversary in the middle Phishing - X33fcon 2024 - [https://youtu.be/-W-LxcbUxI4](https://youtu.be/-W-LxcbUxI4?feature=shared)
@@ -451,14 +565,20 @@
             
     - Modify Gophish Tracking Pixel signature to avoid detection based on signatured tracking pixel.
     - Change the gophish email headers sequence pattern. It may be used to detect the gophish (From BreakDev Red Community).
+    - Setup PostFix infront of gophish to remove IOCs and other detection and spamyness of emails and also removed and fixes the headers.
 
-- [https://edermi.github.io/post/2021/modding_gophish/](https://edermi.github.io/post/2021/modding_gophish/)
-- [https://www.sprocketsecurity.com/resources/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls](https://www.sprocketsecurity.com/resources/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls)
-- [https://cyberwarfare.live/wp-content/uploads/2023/08/OPSEC-on-the-High-Seas_-A-Gophish-Adventure.pdf](https://cyberwarfare.live/wp-content/uploads/2023/08/OPSEC-on-the-High-Seas_-A-Gophish-Adventure.pdf)
-- [https://www.sprocketsecurity.com/resources/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls](https://www.sprocketsecurity.com/resources/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls)
-- [https://github.com/puzzlepeaches/sneaky_gophish](https://github.com/puzzlepeaches/sneaky_gophish)
-- [https://cybercx.co.nz/blog/identifying-gophish-servers/](https://cybercx.co.nz/blog/identifying-gophish-servers/)
-- [https://github.com/gophish/gophish/issues/1553#issuecomment-523969887](https://github.com/gophish/gophish/issues/1553#issuecomment-523969887)
+- **GoPhish Research Blogs/Talks :**
+    - [https://edermi.github.io/post/2021/modding_gophish/](https://edermi.github.io/post/2021/modding_gophish/)
+    - [https://www.sprocketsecurity.com/resources/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls](https://www.sprocketsecurity.com/resources/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls)
+    - [https://cyberwarfare.live/wp-content/uploads/2023/08/OPSEC-on-the-High-Seas_-A-Gophish-Adventure.pdf](https://cyberwarfare.live/wp-content/uploads/2023/08/OPSEC-on-the-High-Seas_-A-Gophish-Adventure.pdf)
+    - [https://www.sprocketsecurity.com/resources/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls](https://www.sprocketsecurity.com/resources/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls)
+    - [https://github.com/puzzlepeaches/sneaky_gophish](https://github.com/puzzlepeaches/sneaky_gophish)
+    - [https://cybercx.co.nz/blog/identifying-gophish-servers/](https://cybercx.co.nz/blog/identifying-gophish-servers/)
+    - [https://github.com/gophish/gophish/issues/1553#issuecomment-523969887](https://github.com/gophish/gophish/issues/1553#issuecomment-523969887)
+
+- **Gophish Alternatives :**
+    - SniperPhish : https://github.com/GemGeorge/SniperPhish
+    - Mailcow : https://github.com/mailcow/mailcow-dockerized
 
 
 ## AiTM Post Exploitation / Phishing Research Blogs/Talks
@@ -466,34 +586,86 @@
 - AiTm (Post Exploitation) : https://www.youtube.com/live/WY4mH-8TbWY?si=LkZ1LuduDln1vRuj
     - https://youtu.be/py68OE4tQ4Q?si=n6QlNuro88c1PRzn
 - https://trustedsec.com/blog/the-triforce-of-initial-access
+- https://www.youtube.com/live/tOzURCc-qUc?si=DMkLwXHVQomRMEJD
 
-## Other Techniques
 
-- For Abusing legit sites for Phishing : [https://lots-project.com/](https://lots-project.com/)
-- BITB : [https://mrd0x.com/browser-in-the-browser-phishing-attack/](https://mrd0x.com/browser-in-the-browser-phishing-attack/)
-- Progressive Web Apps (PWA) Phishing : [https://mrd0x.com/progressive-web-apps-pwa-phishing/](https://mrd0x.com/progressive-web-apps-pwa-phishing/)
-- noVNC Phishing : [https://adepts.of0x.cc/novnc-phishing/](https://adepts.of0x.cc/novnc-phishing/)
-- noVNC and Docker : [https://powerseb.github.io/posts/Another-phishing-tool/](https://powerseb.github.io/posts/Another-phishing-tool/)
+## Other Techniques/Blogs/Researches
+- For Abusing legit sites for Phishing : https://lots-project.com/
+- Muraena : https://github.com/muraenateam/muraena
+- NecroBrowser : https://github.com/muraenateam/necrobrowser
+- BITB : https://mrd0x.com/browser-in-the-browser-phishing-attack/
+    - Frameless-bitb : https://github.com/waelmas/frameless-bitb
+        - https://youtu.be/luJjxpEwVHI?si=sk8kMfdfhZbTz8qR
+    - CuddlePhish : https://github.com/fkasler/cuddlephish
+    - https://pushsecurity.com/blog/phishing-2-0-how-phishing-toolkits-are-evolving-with-aitm/
+    - Okta Chained with Azure with auto MFA Subscription for Okta and Frame Buster Bypass to perform BITB : https://x.com/otterhacker/status/1929487165458641045?s=46&t=mlJvZy0Zrkrxzuvtt7m2cQ
+        - https://github.com/OtterHacker/OktaGinx/
+- Progressive Web Apps (PWA) Phishing : https://mrd0x.com/progressive-web-apps-pwa-phishing/
+- noVNC Phishing : https://adepts.of0x.cc/novnc-phishing/
+    - EvilnoVNC : https://github.com/JoelGMSec/EvilnoVNC
+    - MultiEvilnoVNC : https://blog.wanetty.com/blog/tools/multievilnovnc
+    - https://fhlipzero.io/blogs/6_noVNC/noVNC.html
+    - Delusion (Toolkit based on NoVNC) : https://cloud.google.com/blog/topics/threat-intelligence/session-stealing-browser-in-the-middle
+    - Detecting NoVNC : https://gist.github.com/rad9800/bb73de360fc07ac544f0bc9faac9082d
+- noVNC and Docker : https://powerseb.github.io/posts/Another-phishing-tool/
+    - https://github.com/powerseb/NoPhish
+    - https://fhlipzero.io/blogs/6_noVNC/noVNC.html
+    - https://github.com/Macmod/YesPhish/tree/patchright-chrome
 - EvilQR - QR Phishing
-    - Generate QR : [https://github.com/Flangvik/QRucible](https://github.com/Flangvik/QRucible)
-    - [https://github.com/kgretzky/evilqr](https://github.com/kgretzky/evilqr) , [https://breakdev.org/evilqr-phishing/](https://breakdev.org/evilqr-phishing/)
-    - [https://github.com/swagkarna/EvilJack](https://github.com/swagkarna/EvilJack)
-    - [https://techcommunity.microsoft.com/t5/microsoft-security-experts-blog/hunting-for-qr-code-aitm-phishing-and-user-compromise/bc-p/4054850](https://techcommunity.microsoft.com/t5/microsoft-security-experts-blog/hunting-for-qr-code-aitm-phishing-and-user-compromise/bc-p/4054850)
-- NoPhish : [https://github.com/powerseb/NoPhish](https://github.com/powerseb/NoPhish) and [https://badoption.eu/blog/2023/07/12/entra_phish.html](https://badoption.eu/blog/2023/07/12/entra_phish.html)
-- EvilGoPhish : [https://github.com/fin3ss3g0d/evilgophish](https://github.com/fin3ss3g0d/evilgophish)
-- Smishing : [https://blog.shared-video.mov/systematic-destruction-hacking-the-scammers-pt.-2](https://blog.shared-video.mov/systematic-destruction-hacking-the-scammers-pt.-2)
+    - Generate QR : https://github.com/Flangvik/QRucible
+    - https://badoption.eu/blog/2024/01/08/mobilephish.html
+    - QR2Ascii : https://github.com/Jojodicus/qr2eascii
+    - https://github.com/kgretzky/evilqr , https://breakdev.org/evilqr-phishing/
+    - https://github.com/swagkarna/EvilJack
+    - https://techcommunity.microsoft.com/t5/microsoft-security-experts-blog/hunting-for-qr-code-aitm-phishing-and-user-compromise/bc-p/4054850
+- NoPhish (docker and noVNC) : https://github.com/powerseb/NoPhish and https://badoption.eu/blog/2023/07/12/entra_phish.html
+- EvilGoPhish : https://github.com/fin3ss3g0d/evilgophish
+- Smishing : https://blog.shared-video.mov/systematic-destruction-hacking-the-scammers-pt.-2
 - Phishing With CloudFlare Workers
-    - TryCloudflare : [https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/)
-    - [https://github.com/zolderio/AITMWorker](https://github.com/zolderio/AITMWorker)
-    - [https://gist.github.com/RedTeamOperations/33f245a777c9b322b0466b59d6687f15](https://gist.github.com/RedTeamOperations/33f245a777c9b322b0466b59d6687f15)
-    - [https://cyberwarfare.live/wp-content/uploads/2023/08/Certified-Red-Team-CredOps-Infiltrator-CRT-COI-1.pdf](https://cyberwarfare.live/wp-content/uploads/2023/08/Certified-Red-Team-CredOps-Infiltrator-CRT-COI-1.pdf)
+    - TryCloudflare : https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/
+    - https://github.com/zolderio/AITMWorker
+    - https://gist.github.com/RedTeamOperations/33f245a777c9b322b0466b59d6687f15
+    - https://cyberwarfare.live/wp-content/uploads/2023/08/Certified-Red-Team-CredOps-Infiltrator-CRT-COI-1.pdf
+- Phishing with Cloudflare Public Buckets : https://developers.cloudflare.com/r2/buckets/public-buckets/
+    - https://medium.com/trac-labs/aitm-phishing-hold-the-gabagool-analyzing-the-gabagool-phishing-kit-531f5bbaf0e4
 - Google Open Redirection for phishing
-    - [https://untrustednetwork.net/en/2024/02/26/google-open-redirect/](https://untrustednetwork.net/en/2024/02/26/google-open-redirect/)
-    - Open Redirect at : [https://googleweblight.com/i?u=m4lici0u5.com](https://googleweblight.com/i?u=m4lici0u5.com)
-    - More Can be found at : [https://lots-project.com/](https://lots-project.com/)
+    - https://untrustednetwork.net/en/2024/02/26/google-open-redirect/
+    - Open Redirect at (not working) : https://googleweblight.com/i?u=m4lici0u5.com
+    - Open Redirect : https://www.google.com/url?q=https://m4lici0u5.com
+    - Open Redirect : https://business.google.com/website_shared/launch_bw.html?f=https://m4lici0u5.com
+    - More Can be found at : https://lots-project.com/
+- https://blog.delivr.to/delivr-tos-top-10-payloads-dec-24-pastejacking-image-less-qr-codes-and-concatenated-zip-a32e668106dd#878d
 - Phishing Past Mail Protection Controls using Azure Information Protection
     - https://youtu.be/tHNi5BzScVo?si=H2czog19AmTp_O26
     - https://youtu.be/EYUp_MNtJIk?si=sg_9RQggDvqOSLNL
     - https://youtu.be/KhdzIPPW4W0?si=E4CmWx0iO8EaR6JF
 - https://nicolasuter.medium.com/aitm-phishing-with-azure-functions-a1530b52df05
 - https://pushsecurity.com/blog/a-new-class-of-phishing-verification-phishing-and-cross-idp-impersonation/
+- https://blog.delivr.to/delivr-tos-top-10-payloads-dec-24-pastejacking-image-less-qr-codes-and-concatenated-zip-a32e668106dd#878d
+- https://trustedsec.com/blog/oops-i-udld-it-again
+- Credential Phishing by Docusign abuse : https://sublime.security/blog/living-off-the-land-credential-phishing-via-docusign-abuse/
+- Hidden credential phishing with EML attachments : https://sublime.security/blog/hidden-credential-phishing-within-eml-attachments/
+- https://sublime.security/blog/talking-year-end-credential-phishing-scams-over-turkey/
+- Using Microsoft Customer Voice for Phishing : https://cofense.com/blog/microsoft-customer-voice-urls-used-in-latest-phishing-campaign
+- https://www.youtube.com/live/tOzURCc-qUc?si=DMkLwXHVQomRMEJD
+- DoubleClickJacking : https://www.paulosyibelo.com/2024/12/doubleclickjacking-what.html
+    - https://safetyscience.info/labs/doubleclickjacking/
+- Comparison of various Techniques : https://blog.quarkslab.com/technical-dive-into-modern-phishing.html
+- https://cloud.google.com/blog/topics/threat-intelligence/session-stealing-browser-in-the-middle
+- Abusing Incoming Microsoft Teams webhooks for phishing : https://www.blackhillsinfosec.com/wishing-webhook-phishing-in-teams/
+    - https://www.youtube.com/live/kMMZrd9intI?si=rd_EKWmXeKbbGAEI
+- Rogue RDP or RDP (.rdp) for phishing : https://github.com/GoSecure/pyrdp
+    - https://cloud.google.com/blog/topics/threat-intelligence/windows-rogue-remote-desktop-protocol
+    - https://www.blackhillsinfosec.com/rogue-rdp-revisiting-initial-access-methods/
+- https://easydmarc.com/blog/google-spoofed-via-dkim-replay-attack-a-technical-breakdown/
+- SVG for phishing : https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/pixel-perfect-trap-the-surge-of-svg-borne-phishing-attacks/
+- Using ClickOnce with Phishing for Intital Access  : https://www.netspi.com/blog/technical-blog/adversary-simulation/all-you-need-is-one-a-clickonce-love-story/
+- https://denniskniep.github.io/posts/09-device-code-phishing/
+- https://badoption.eu/blog/2025/04/25/github.html
+- https://atticsecurity.com/blog/aitm-for-whfb-persistence/
+- [Must Check] Evilworker : https://github.com/Ahaz1701/EvilWorker
+    - https://medium.com/@ahaz1701/evilworker-da94ae171249
+
+
+## Phishing Research Talks
+- https://youtu.be/zmo_tPbCXtA?si=4imjZtwQ6I9iu_tP
